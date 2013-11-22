@@ -47,7 +47,7 @@ var checkForWinner = function () {
 $(document).on('click', '#board .space', function (e) {
   
   var spaceNum = $(e.currentTarget).index();
-  if (spaceNum === true) {
+  if (spaces[spaceNum]) {
     e.preventDefault();
     alert("That space is taken. Please choose a free square.");
   }
