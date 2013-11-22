@@ -59,9 +59,6 @@ $(document).on('click', '#board .space', function (e) {
     $('#board .space:eq(' + spaceNum + ')').addClass(currentPlayer);  
   }
  
-  
-  
-
   checkForWinner();
   setNextTurn();
 });
@@ -70,6 +67,11 @@ $(document).on('game-win', function (e, winner) {
   alert("Congrats " + winner + ", you won the game!");
   // TODO: Alert who won the game
 });
+
+// Function to restart the game:
+var restartGame = function (e) {
+  
+}
 
 // Start the game
 setNextTurn();
