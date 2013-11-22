@@ -30,7 +30,7 @@ var checkForWinner = function () {
     || spaces[6] === spaces[7] && spaces[7] === spaces[8]
     // TODO: Check for rest of game winning cases
   )
-  {
+ {
     console.log('somebody won');
     // TODO: Trigger 'game-win' event with the winning player as the event data
   }
@@ -51,6 +51,7 @@ $(document).on('click', '#board .space', function (e) {
 });
 
 $(document).on('game-win', function (e, winner) {
+  alert("Congrats " + winner + ", you won the game!")
   // TODO: Alert who won the game
 });
 
