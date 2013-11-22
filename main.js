@@ -52,15 +52,15 @@ $(document).on('click', '#board .space', function (e) {
     alert("That space is taken. Please choose a free square.");
   }
   else {
-    console.log('You clicked on space #' + spaceNum);   
+    // Mark the space with the current player's name
+    spaces[spaceNum] = currentPlayer;
+    console.log('You clicked on space #' + spaceNum); 
+    // Add class to elem so css can take care of the visuals
+    $('#board .space:eq(' + spaceNum + ')').addClass(currentPlayer);  
   }
  
-
-  // Mark the space with the current player's name
-  // TODO: Don't mark it unless the space is blank
-  spaces[spaceNum] = currentPlayer;
-  // Add class to elem so css can take care of the visuals
-  $('#board .space:eq(' + spaceNum + ')').addClass(currentPlayer);
+  
+  
 
   checkForWinner();
   setNextTurn();
