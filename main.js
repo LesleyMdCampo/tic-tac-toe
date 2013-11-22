@@ -9,6 +9,7 @@ var spaces = [
 var player1 = 'veggies';
 var player2 = 'junkfood';
 var currentPlayer = null;
+var winner = null;
 
 var setNextTurn = function () {
   if (currentPlayer === player1) {
@@ -34,18 +35,26 @@ var checkForWinner = function () {
     || spaces[2] === spaces[5] && spaces[5] === spaces[8]
     || spaces[0] === spaces[4] && spaces[4] === spaces[8]
     || spaces[2] === spaces[4] && spaces[4] === spaces[6]
-
   )
  {
+    winner = currentPlayer
     console.log('somebody won');
     // TODO: Trigger 'game-win' event with the winning player as the event data 
-    $(document).trigger('game-win', 'currentPlayer');
+    $(document).trigger('game-win', winner);
   }
 };
 
 $(document).on('click', '#board .space', function (e) {
+  
   var spaceNum = $(e.currentTarget).index();
-  console.log('You clicked on space #' + spaceNum);
+  if (spaceNum === true) {
+    e.preventDefault();
+    alert("That space is taken. Please choose a free square.");
+  }
+  else {
+    console.log('You clicked on space #' + spaceNum);   
+  }
+ 
 
   // Mark the space with the current player's name
   // TODO: Don't mark it unless the space is blank
@@ -58,7 +67,7 @@ $(document).on('click', '#board .space', function (e) {
 });
 
 $(document).on('game-win', function (e, winner) {
-  alert("Congrats " + winner + ", you won the game!")
+  alert("Congrats " + winner + ", you won the game!");
   // TODO: Alert who won the game
 });
 
