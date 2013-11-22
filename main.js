@@ -10,6 +10,8 @@ var player1 = 'veggies';
 var player2 = 'junkfood';
 var currentPlayer = null;
 var winner = null;
+var counter1 = 0
+var counter2 = 0
 
 var setNextTurn = function () {
   if (currentPlayer === player1) {
@@ -68,10 +70,24 @@ $(document).on('game-win', function (e, winner) {
   // TODO: Alert who won the game
 });
 
-// Function to restart the game:
-var restartGame = function (e) {
-  
+var addCount1 = function() {
+  return counter1++;
 }
+
+var addCount2 = function() {
+  return counter2++;
+}
+
+$(document).on('game-win', function (e, winner) {
+  if (winner === player1) {
+    addCount1();
+    $('.veggie').text('Veggie: ' + counter1);
+  } else {
+    addCount2();
+    $('.junkfood').text('Junkfood: ' + counter2);
+  }
+});
+
 
 // Start the game
 setNextTurn();
